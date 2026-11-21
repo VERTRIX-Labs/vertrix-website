@@ -1,0 +1,22 @@
+{
+  "name": "vertrix-website",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "dev": "concurrently --kill-others-on-fail -n backend,frontend \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:all": "npm run dev",
+    "dev:frontend": "npm run dev --workspace frontend",
+    "dev:backend": "npm run dev --workspace backend",
+    "build": "npm run build --workspace frontend && npm run build --workspace backend",
+    "lint": "oxlint frontend/src backend/src",
+    "preview": "npm run preview --workspace frontend"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.7",
+    "oxlint": "^1.90.0"
+  }
+}
