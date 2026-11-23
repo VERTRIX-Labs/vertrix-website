@@ -1,29 +1,42 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import type { FormEvent } from 'react'
 import { useTranslation } from 'react-i18next'
 
-type FieldErrors = Partial<Record<'name' | 'email' | 'type' | 'description' | 'consent', string>>
+type Field = 'name' | 'email' | 'type' | 'description' | 'consent'
+type FieldErrors = Partial<Record<Field, string>>
 
 export function ContactForm() {
   const { t } = useTranslation()
+  const formRef = useRef<HTMLFormElement>(null)
   const [errors, setErrors] = useState<FieldErrors>({})
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
 
+  const types = Object.keys(t('contact.types', { returnObjects: true }) as Record<string, string>)
+  const budgets = Object.keys(t('contact.budgets', { returnObjects: true }) as Record<string, string>)
+
   const submit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    const data = new FormData(event.currentTarget)
-    const nextErrors: FieldErrors = {}
+    // Keep a reference: `event.currentTarget` is null once we `await`.
+    const form = event.currentTarget
+    const data = new FormData(form)
     const name = String(data.get('name') ?? '').trim()
     const email = String(data.get('email') ?? '').trim()
     const type = String(data.get('type') ?? '')
     const description = String(data.get('description') ?? '').trim()
-    if (name.length < 2) nextErrors.name = t('contact.validation.name')
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) nextErrors.email = t('contact.validation.email')
-    if (!type) nextErrors.type = t('contact.validation.type')
-    if (description.length < 10) nextErrors.description = t('contact.validation.description')
-    if (!data.get('consent')) nextErrors.consent = t('contact.validation.consent')
-    setErrors(nextErrors)
-    if (Object.keys(nextErrors).length) return
+
+    const next: FieldErrors = {}
+    if (name.length < 2) next.name = t('contact.validation.name')
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) next.email = t('contact.validation.email')
+    if (!type) next.type = t('contact.validation.type')
+    if (description.length < 10) next.description = t('contact.validation.description')
+    if (!data.get('consent')) next.consent = t('contact.validation.consent')
+    setErrors(next)
+
+    const firstInvalid = (Object.keys(next) as Field[])[0]
+    if (firstInvalid) {
+      form.querySelector<HTMLElement>(`[name="${firstInvalid}"]`)?.focus()
+      return
+    }
 
     setStatus('loading')
     try {
@@ -39,27 +52,59 @@ export function ContactForm() {
       })
       if (!response.ok) throw new Error('Submission failed')
       setStatus('success')
-      event.currentTarget.reset()
+      form.reset()
     } catch {
       setStatus('error')
     }
   }
 
+  const err = (field: Field) => errors[field]
+  const describe = (field: Field) => (err(field) ? `${field}-error` : undefined)
+  const FieldError = ({ field }: { field: Field }) =>
+    err(field) ? <small id={`${field}-error`} role="alert">{err(field)}</small> : null
+
   return (
-    <form className="contact-form" onSubmit={submit} noValidate>
+    <form ref={formRef} className="contact-form" onSubmit={submit} noValidate>
       <div className="form-grid">
-        <label>{t('contact.name')}<input name="name" autoComplete="name" aria-invalid={Boolean(errors.name)} />{errors.name && <small>{errors.name}</small>}</label>
-        <label>{t('contact.email')}<input name="email" type="email" autoComplete="email" aria-invalid={Boolean(errors.email)} />{errors.email && <small>{errors.email}</small>}</label>
-        <label>{t('contact.company')}<input name="company" autoComplete="organization" /></label>
-        <label>{t('contact.projectType')}<select name="type" defaultValue="" aria-invalid={Boolean(errors.type)}><option value="" disabled>—</option>{(t('contact.types', { returnObjects: true }) as string[]).map((item) => <option key={item}>{item}</option>)}</select>{errors.type && <small>{errors.type}</small>}</label>
-        <label>{t('contact.budget')}<select name="budget" defaultValue=""><option value="" disabled>—</option>{(t('contact.budgets', { returnObjects: true }) as string[]).map((item) => <option key={item}>{item}</option>)}</select></label>
-        <label className="full">{t('contact.description')}<textarea name="description" rows={5} aria-invalid={Boolean(errors.description)} />{errors.description && <small>{errors.description}</small>}</label>
+        <label>{t('contact.name')}
+          <input name="name" autoComplete="name" aria-invalid={Boolean(err('name'))} aria-describedby={describe('name')} />
+          <FieldError field="name" />
+        </label>
+        <label>{t('contact.email')}
+          <input name="email" type="email" autoComplete="email" aria-invalid={Boolean(err('email'))} aria-describedby={describe('email')} />
+          <FieldError field="email" />
+        </label>
+        <label>{t('contact.company')}
+          <input name="company" autoComplete="organization" />
+        </label>
+        <label>{t('contact.projectType')}
+          <select name="type" defaultValue="" aria-invalid={Boolean(err('type'))} aria-describedby={describe('type')}>
+            <option value="" disabled>{t('contact.select')}</option>
+            {types.map((id) => <option key={id} value={id}>{t(`contact.types.${id}`)}</option>)}
+          </select>
+          <FieldError field="type" />
+        </label>
+        <label>{t('contact.budget')}
+          <select name="budget" defaultValue="">
+            <option value="" disabled>{t('contact.select')}</option>
+            {budgets.map((id) => <option key={id} value={id}>{t(`contact.budgets.${id}`)}</option>)}
+          </select>
+        </label>
+        <label className="full">{t('contact.description')}
+          <textarea name="description" rows={5} aria-invalid={Boolean(err('description'))} aria-describedby={describe('description')} />
+          <FieldError field="description" />
+        </label>
       </div>
-      <label className="consent"><input name="consent" type="checkbox" /><span>{t('contact.consent')}</span></label>
-      {errors.consent && <small className="error-text">{errors.consent}</small>}
+      <label className="consent">
+        <input name="consent" type="checkbox" aria-invalid={Boolean(err('consent'))} aria-describedby={describe('consent')} />
+        <span>{t('contact.consent')}</span>
+      </label>
+      <FieldError field="consent" />
       {status === 'success' && <p className="form-status success" role="status">{t('contact.success')}</p>}
       {status === 'error' && <p className="form-status error" role="alert">{t('contact.error')}</p>}
-      <button className="button primary" type="submit" disabled={status === 'loading'}>{status === 'loading' ? t('contact.submitting') : t('contact.submit')}</button>
+      <button className="button primary" type="submit" disabled={status === 'loading'}>
+        {status === 'loading' ? t('contact.submitting') : t('contact.submit')}
+      </button>
     </form>
   )
 }

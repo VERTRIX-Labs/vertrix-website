@@ -1,13 +1,203 @@
 {
-  "nav": {"home":"Inicio","about":"Nosotros","services":"Servicios","projects":"Proyectos","process":"Proceso","technologies":"Tecnologías","team":"Equipo","contact":"Contacto","cta":"Iniciar proyecto"},
-  "hero": {"eyebrow":"ESTUDIO DE DESARROLLO DE SOFTWARE","title":"VERTRIX","subtitle":"Ingeniería de experiencias digitales.","description":"Desarrollamos soluciones digitales que combinan tecnología, creatividad y funcionalidad para transformar ideas en experiencias digitales significativas.","primary":"Explorar proyectos","secondary":"Hablemos"},
-  "about": {"eyebrow":"Sobre VERTRIX","title":"Ideas convertidas en realidad.","description":"VERTRIX es un estudio de desarrollo de software enfocado en crear experiencias digitales y soluciones tecnológicas prácticas. Combinamos ingeniería, creatividad y aprendizaje continuo para transformar ideas en productos funcionales.","missionLabel":"Misión","mission":"Desarrollar soluciones digitales útiles, confiables y bien construidas que ayuden a transformar ideas en realidad.","visionLabel":"Visión","vision":"Crecer como un estudio de desarrollo reconocido por la innovación, la calidad y las soluciones digitales significativas.","values":"Innovación · Colaboración · Aprendizaje · Calidad · Responsabilidad · Excelencia"},
-  "services": {"eyebrow":"Qué hacemos","title":"Construido para la web moderna.","items":{"web":{"title":"Desarrollo Web","description":"Sitios web completos y adaptables diseñados alrededor de recorridos claros."},"frontend":{"title":"Desarrollo Frontend","description":"Interfaces modernas con buen rendimiento, accesibilidad y detalle."},"backend":{"title":"Desarrollo Backend","description":"APIs y lógica de aplicación confiables y fáciles de mantener."},"software":{"title":"Software a Medida","description":"Herramientas creadas específicamente para necesidades y procesos concretos."},"database":{"title":"Soluciones de Bases de Datos","description":"Modelos de datos estructurados y estrategias eficientes de persistencia."},"deployment":{"title":"Despliegue e Infraestructura","description":"Flujos prácticos de despliegue y configuración de infraestructura."}}},
-  "projects": {"eyebrow":"Trabajo seleccionado","title":"Proyectos con propósito.","viewAll":"Ver todos los proyectos","view":"Ver proyecto","repository":"Ver código en GitHub","backToAll":"Volver a proyectos","typeLabels":{"independent":"Independiente","academic":"Académico","collaborative":"Colaborativo","client":"Cliente","web":"Plataforma web"}},
-  "process": {"eyebrow":"Cómo trabajamos","title":"Un camino claro de la idea al lanzamiento.","steps":[{"title":"Descubrimiento","description":"Comprender necesidades, objetivos y requisitos."},{"title":"Planificación","description":"Definir alcance, arquitectura y estrategia."},{"title":"Diseño","description":"Crear interfaces y experiencias significativas."},{"title":"Desarrollo","description":"Construir, integrar y probar la solución."},{"title":"Despliegue","description":"Publicar, verificar y entregar el producto."}]},
-  "stack": {"eyebrow":"Tecnología","title":"Nuestro ecosistema tecnológico.","categories":{"frontend":"Frontend","backend":"Backend","database":"Bases de datos","tools":"Herramientas e infraestructura"}},
-  "team": {"eyebrow":"El equipo","title":"Creado por personas comprometidas.","placeholder":"Información del perfil pendiente","github":"GitHub","linkedin":"LinkedIn","portfolio":"Portafolio","email":"Correo"},
-  "contact": {"eyebrow":"Construyamos algo","title":"¿Tienes una idea? Hagámosla realidad.","name":"Nombre completo","email":"Correo electrónico","company":"Empresa","projectType":"Tipo de proyecto","budget":"Presupuesto aproximado","description":"Descripción del proyecto","consent":"Acepto que esta información sea utilizada para responder a mi consulta.","submit":"Enviar mensaje","submitting":"Enviando...","success":"Tu mensaje fue enviado. La integración de correo ya puede recibirlo.","error":"No pudimos enviar el formulario. Inténtalo de nuevo.","validation":{"name":"Ingresa tu nombre completo.","email":"Ingresa un correo válido.","type":"Selecciona un tipo de proyecto.","description":"Describe tu proyecto.","consent":"Se requiere tu consentimiento."},"types":["Sitio web","Aplicación web","Software a medida","Base de datos","Infraestructura","Otro"],"budgets":["No definido","Menos de $1,000","$1,000–$3,000","$3,000–$6,000","Más de $6,000+"]},
-  "footer": {"description":"Un estudio de desarrollo de software que crea soluciones digitales prácticas y bien construidas.","rights":"Todos los derechos reservados.","email":"Correo"},
-  "notFound":{"title":"Página no encontrada","description":"La página que buscas no existe.","back":"Volver al inicio"}
+  "skip": "Saltar al contenido",
+  "nav": {
+    "about": "Nosotros",
+    "services": "Servicios",
+    "projects": "Proyectos",
+    "process": "Proceso",
+    "team": "Equipo",
+    "contact": "Contacto",
+    "cta": "Iniciar proyecto",
+    "menuOpen": "Abrir menú",
+    "menuClose": "Cerrar menú",
+    "main": "Navegación principal",
+    "home": "Inicio de VERTRIX",
+    "language": "Idioma"
+  },
+  "hero": {
+    "eyebrow": "Estudio de desarrollo de software",
+    "title": "VERTRIX",
+    "subtitle": "Ingeniería de experiencias digitales.",
+    "description": "Construimos productos web prácticos y bien hechos — de la interfaz a la API y la base de datos — para personas con una idea y una necesidad real.",
+    "primary": "Explorar proyectos",
+    "secondary": "Hablemos",
+    "location": "Managua, Nicaragua",
+    "scroll": "Bajar"
+  },
+  "about": {
+    "eyebrow": "Sobre VERTRIX",
+    "title": "Ideas convertidas en realidad.",
+    "description": "VERTRIX es un estudio de desarrollo de software enfocado en crear experiencias digitales y soluciones tecnológicas prácticas. Combinamos ingeniería, creatividad y aprendizaje continuo para convertir ideas en productos funcionales.",
+    "missionLabel": "Misión",
+    "mission": "Desarrollar soluciones digitales útiles, confiables y bien construidas que ayuden a transformar ideas en realidad.",
+    "visionLabel": "Visión",
+    "vision": "Crecer como un estudio de desarrollo reconocido por la innovación, la calidad y las soluciones digitales significativas.",
+    "values": [
+      "Innovación",
+      "Colaboración",
+      "Aprendizaje",
+      "Calidad",
+      "Responsabilidad",
+      "Excelencia"
+    ]
+  },
+  "services": {
+    "eyebrow": "Qué hacemos",
+    "title": "Construido para la web moderna.",
+    "items": {
+      "web": {
+        "title": "Desarrollo Web",
+        "description": "Sitios web completos y adaptables diseñados alrededor de recorridos claros."
+      },
+      "frontend": {
+        "title": "Desarrollo Frontend",
+        "description": "Interfaces modernas con buen rendimiento, accesibilidad y detalle."
+      },
+      "backend": {
+        "title": "Desarrollo Backend",
+        "description": "APIs y lógica de aplicación confiables y fáciles de mantener."
+      },
+      "software": {
+        "title": "Software a Medida",
+        "description": "Herramientas creadas específicamente para necesidades y procesos concretos."
+      },
+      "database": {
+        "title": "Bases de Datos",
+        "description": "Modelos de datos estructurados y estrategias eficientes de persistencia."
+      },
+      "deployment": {
+        "title": "Despliegue e Infraestructura",
+        "description": "Flujos prácticos de despliegue y configuración de infraestructura."
+      }
+    }
+  },
+  "projects": {
+    "eyebrow": "Trabajo seleccionado",
+    "title": "Proyectos con propósito.",
+    "viewAll": "Ver todos los proyectos",
+    "view": "Ver proyecto",
+    "repository": "Ver código en GitHub",
+    "backToAll": "Volver a proyectos",
+    "next": "Siguiente proyecto",
+    "status": {
+      "inDevelopment": "En desarrollo",
+      "live": "En línea"
+    },
+    "typeLabels": {
+      "independent": "Independiente",
+      "academic": "Académico",
+      "collaborative": "Colaborativo",
+      "client": "Cliente",
+      "web": "Plataforma web"
+    },
+    "detail": {
+      "overview": "Resumen",
+      "need": "Necesidad",
+      "solution": "Solución",
+      "technology": "Tecnologías",
+      "features": "Características",
+      "gallery": "Leyendas en la plataforma",
+      "screenshot": "Página de inicio",
+      "demo": "Demo"
+    }
+  },
+  "process": {
+    "eyebrow": "Cómo trabajamos",
+    "title": "Un camino claro de la idea al lanzamiento.",
+    "steps": [
+      {
+        "title": "Descubrimiento",
+        "description": "Comprender necesidades, objetivos y requisitos."
+      },
+      {
+        "title": "Planificación",
+        "description": "Definir alcance, arquitectura y estrategia."
+      },
+      {
+        "title": "Diseño",
+        "description": "Crear interfaces y experiencias significativas."
+      },
+      {
+        "title": "Desarrollo",
+        "description": "Construir, integrar y probar la solución."
+      },
+      {
+        "title": "Despliegue",
+        "description": "Publicar, verificar y entregar el producto."
+      }
+    ]
+  },
+  "stack": {
+    "eyebrow": "Tecnología",
+    "title": "Nuestro ecosistema tecnológico.",
+    "categories": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "database": "Bases de datos",
+      "tools": "Herramientas e infraestructura"
+    }
+  },
+  "team": {
+    "eyebrow": "El equipo",
+    "title": "Creado por personas comprometidas.",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "portfolio": "Portafolio",
+    "email": "Correo",
+    "soonTitle": "Más integrantes pronto",
+    "soonText": "Los perfiles del resto del equipo están en camino."
+  },
+  "contact": {
+    "eyebrow": "Construyamos algo",
+    "title": "¿Tienes una idea? Hagámosla realidad.",
+    "intro": "Cuéntanos qué necesitas. Te respondemos por correo.",
+    "direct": "¿Prefieres escribirnos directo?",
+    "name": "Nombre completo",
+    "email": "Correo electrónico",
+    "company": "Empresa",
+    "projectType": "Tipo de proyecto",
+    "budget": "Presupuesto aproximado",
+    "description": "Descripción del proyecto",
+    "consent": "Acepto que esta información sea utilizada para responder a mi consulta.",
+    "submit": "Enviar mensaje",
+    "submitting": "Enviando...",
+    "success": "¡Gracias! Tu mensaje fue enviado. Te responderemos pronto a tu correo.",
+    "error": "No pudimos enviar el formulario. Inténtalo de nuevo o escríbenos directamente.",
+    "select": "Selecciona…",
+    "validation": {
+      "name": "Ingresa tu nombre completo.",
+      "email": "Ingresa un correo válido.",
+      "type": "Selecciona un tipo de proyecto.",
+      "description": "Describe tu proyecto en al menos 10 caracteres.",
+      "consent": "Se requiere tu consentimiento."
+    },
+    "types": {
+      "website": "Sitio web",
+      "webapp": "Aplicación web",
+      "custom": "Software a medida",
+      "database": "Base de datos",
+      "infrastructure": "Infraestructura",
+      "other": "Otro"
+    },
+    "budgets": {
+      "undefined": "No definido",
+      "lt1k": "Menos de $1,000",
+      "1k-3k": "$1,000–$3,000",
+      "3k-6k": "$3,000–$6,000",
+      "gt6k": "Más de $6,000"
+    }
+  },
+  "footer": {
+    "description": "Un estudio de desarrollo de software que crea soluciones digitales prácticas y bien construidas.",
+    "rights": "Todos los derechos reservados.",
+    "email": "Correo",
+    "explore": "Explorar",
+    "social": "Redes"
+  },
+  "notFound": {
+    "title": "Página no encontrada",
+    "description": "La página que buscas no existe.",
+    "back": "Volver al inicio"
+  },
+  "loading": "Cargando…"
 }

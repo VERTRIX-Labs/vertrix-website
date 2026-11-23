@@ -1,13 +1,203 @@
 {
-  "nav": {"home":"Home","about":"About","services":"Services","projects":"Projects","process":"Process","technologies":"Technologies","team":"Team","contact":"Contact","cta":"Start a project"},
-  "hero": {"eyebrow":"SOFTWARE DEVELOPMENT STUDIO","title":"VERTRIX","subtitle":"Engineering digital experiences.","description":"We develop digital solutions that combine technology, creativity, and functionality to transform ideas into meaningful digital experiences.","primary":"Explore our work","secondary":"Let's talk"},
-  "about": {"eyebrow":"About VERTRIX","title":"Ideas engineered into reality.","description":"VERTRIX is a software development studio focused on building digital experiences and practical software solutions. We combine engineering, creativity, and continuous learning to transform ideas into functional products.","missionLabel":"Mission","mission":"To develop useful, reliable, and well-engineered digital solutions that help transform ideas into reality.","visionLabel":"Vision","vision":"To grow into a recognized software development studio known for innovation, quality, and meaningful digital solutions.","values":"Innovation · Collaboration · Learning · Quality · Responsibility · Excellence"},
-  "services": {"eyebrow":"What we do","title":"Built for the modern web.","items":{"web":{"title":"Web Development","description":"Complete, responsive websites designed around clear user journeys."},"frontend":{"title":"Frontend Development","description":"Modern interfaces with strong performance, accessibility, and detail."},"backend":{"title":"Backend Development","description":"Reliable APIs and application logic built for maintainability."},"software":{"title":"Custom Software","description":"Purpose-built tools designed around specific needs and workflows."},"database":{"title":"Database Solutions","description":"Structured data models and efficient persistence strategies."},"deployment":{"title":"Deployment & Infrastructure","description":"Practical deployment workflows and infrastructure configuration."}}},
-  "projects": {"eyebrow":"Selected work","title":"Projects with purpose.","viewAll":"View all projects","view":"View project","repository":"View source on GitHub","backToAll":"Back to all projects","typeLabels":{"independent":"Independent","academic":"Academic","collaborative":"Collaborative","client":"Client","web":"Web platform"}},
-  "process": {"eyebrow":"How we work","title":"A clear path from idea to launch.","steps":[{"title":"Discovery","description":"Understand needs, goals, and requirements."},{"title":"Planning","description":"Define scope, architecture, and strategy."},{"title":"Design","description":"Create interfaces and meaningful experiences."},{"title":"Development","description":"Build, integrate, and test the solution."},{"title":"Deployment","description":"Publish, verify, and deliver the product."}]},
-  "stack": {"eyebrow":"Technology","title":"Our technology ecosystem.","categories":{"frontend":"Frontend","backend":"Backend","database":"Database","tools":"Tools & Infrastructure"}},
-  "team": {"eyebrow":"The team","title":"Built by people who care.","placeholder":"Profile information pending","github":"GitHub","linkedin":"LinkedIn","portfolio":"Portfolio","email":"Email"},
-  "contact": {"eyebrow":"Let's build something","title":"Have an idea? Let's build it.","name":"Full name","email":"Email address","company":"Company","projectType":"Project type","budget":"Approximate budget","description":"Project description","consent":"I agree to have this information used to respond to my inquiry.","submit":"Send message","submitting":"Sending...","success":"Your message was submitted. The email integration can now receive it.","error":"We couldn't submit the form. Please try again.","validation":{"name":"Enter your full name.","email":"Enter a valid email address.","type":"Select a project type.","description":"Describe your project.","consent":"Your consent is required."},"types":["Website","Web application","Custom software","Database","Infrastructure","Other"],"budgets":["Not defined","Under $1,000","$1,000–$3,000","$3,000–$6,000","$6,000+"]},
-  "footer": {"description":"A software development studio creating practical, well-engineered digital solutions.","rights":"All rights reserved.","email":"Email"},
-  "notFound":{"title":"Page not found","description":"The page you're looking for doesn't exist.","back":"Back to home"}
+  "skip": "Skip to content",
+  "nav": {
+    "about": "About",
+    "services": "Services",
+    "projects": "Projects",
+    "process": "Process",
+    "team": "Team",
+    "contact": "Contact",
+    "cta": "Start a project",
+    "menuOpen": "Open menu",
+    "menuClose": "Close menu",
+    "main": "Main navigation",
+    "home": "VERTRIX home",
+    "language": "Language"
+  },
+  "hero": {
+    "eyebrow": "Software development studio",
+    "title": "VERTRIX",
+    "subtitle": "Engineering digital experiences.",
+    "description": "We build practical, well-made web products — from the interface to the API and the database — for people with an idea and a real need.",
+    "primary": "Explore our work",
+    "secondary": "Let's talk",
+    "location": "Managua, Nicaragua",
+    "scroll": "Scroll"
+  },
+  "about": {
+    "eyebrow": "About VERTRIX",
+    "title": "Ideas engineered into reality.",
+    "description": "VERTRIX is a software development studio focused on building digital experiences and practical software solutions. We combine engineering, creativity, and continuous learning to turn ideas into functional products.",
+    "missionLabel": "Mission",
+    "mission": "To develop useful, reliable, and well-engineered digital solutions that help transform ideas into reality.",
+    "visionLabel": "Vision",
+    "vision": "To grow into a recognized software development studio known for innovation, quality, and meaningful digital solutions.",
+    "values": [
+      "Innovation",
+      "Collaboration",
+      "Learning",
+      "Quality",
+      "Responsibility",
+      "Excellence"
+    ]
+  },
+  "services": {
+    "eyebrow": "What we do",
+    "title": "Built for the modern web.",
+    "items": {
+      "web": {
+        "title": "Web Development",
+        "description": "Complete, responsive websites designed around clear user journeys."
+      },
+      "frontend": {
+        "title": "Frontend Development",
+        "description": "Modern interfaces with strong performance, accessibility, and detail."
+      },
+      "backend": {
+        "title": "Backend Development",
+        "description": "Reliable APIs and application logic built for maintainability."
+      },
+      "software": {
+        "title": "Custom Software",
+        "description": "Purpose-built tools designed around specific needs and workflows."
+      },
+      "database": {
+        "title": "Database Solutions",
+        "description": "Structured data models and efficient persistence strategies."
+      },
+      "deployment": {
+        "title": "Deployment & Infrastructure",
+        "description": "Practical deployment workflows and infrastructure configuration."
+      }
+    }
+  },
+  "projects": {
+    "eyebrow": "Selected work",
+    "title": "Projects with purpose.",
+    "viewAll": "View all projects",
+    "view": "View project",
+    "repository": "View source on GitHub",
+    "backToAll": "Back to all projects",
+    "next": "Next project",
+    "status": {
+      "inDevelopment": "In development",
+      "live": "Live"
+    },
+    "typeLabels": {
+      "independent": "Independent",
+      "academic": "Academic",
+      "collaborative": "Collaborative",
+      "client": "Client",
+      "web": "Web platform"
+    },
+    "detail": {
+      "overview": "Overview",
+      "need": "Need",
+      "solution": "Solution",
+      "technology": "Technology",
+      "features": "Features",
+      "gallery": "Legends in the platform",
+      "screenshot": "Landing page",
+      "demo": "Demo"
+    }
+  },
+  "process": {
+    "eyebrow": "How we work",
+    "title": "A clear path from idea to launch.",
+    "steps": [
+      {
+        "title": "Discovery",
+        "description": "Understand needs, goals, and requirements."
+      },
+      {
+        "title": "Planning",
+        "description": "Define scope, architecture, and strategy."
+      },
+      {
+        "title": "Design",
+        "description": "Create interfaces and meaningful experiences."
+      },
+      {
+        "title": "Development",
+        "description": "Build, integrate, and test the solution."
+      },
+      {
+        "title": "Deployment",
+        "description": "Publish, verify, and deliver the product."
+      }
+    ]
+  },
+  "stack": {
+    "eyebrow": "Technology",
+    "title": "Our technology ecosystem.",
+    "categories": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "database": "Database",
+      "tools": "Tools & Infrastructure"
+    }
+  },
+  "team": {
+    "eyebrow": "The team",
+    "title": "Built by people who care.",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "portfolio": "Portfolio",
+    "email": "Email",
+    "soonTitle": "More members soon",
+    "soonText": "The rest of the team's profiles are on their way."
+  },
+  "contact": {
+    "eyebrow": "Let's build something",
+    "title": "Have an idea? Let's build it.",
+    "intro": "Tell us what you need. We'll get back to you by email.",
+    "direct": "Prefer to write directly?",
+    "name": "Full name",
+    "email": "Email address",
+    "company": "Company",
+    "projectType": "Project type",
+    "budget": "Approximate budget",
+    "description": "Project description",
+    "consent": "I agree to have this information used to respond to my inquiry.",
+    "submit": "Send message",
+    "submitting": "Sending...",
+    "success": "Thanks! Your message was sent. We'll reply to your email soon.",
+    "error": "We couldn't send the form. Please try again or write to us directly.",
+    "select": "Select…",
+    "validation": {
+      "name": "Enter your full name.",
+      "email": "Enter a valid email address.",
+      "type": "Select a project type.",
+      "description": "Describe your project in at least 10 characters.",
+      "consent": "Your consent is required."
+    },
+    "types": {
+      "website": "Website",
+      "webapp": "Web application",
+      "custom": "Custom software",
+      "database": "Database",
+      "infrastructure": "Infrastructure",
+      "other": "Other"
+    },
+    "budgets": {
+      "undefined": "Not defined",
+      "lt1k": "Under $1,000",
+      "1k-3k": "$1,000–$3,000",
+      "3k-6k": "$3,000–$6,000",
+      "gt6k": "$6,000+"
+    }
+  },
+  "footer": {
+    "description": "A software development studio creating practical, well-engineered digital solutions.",
+    "rights": "All rights reserved.",
+    "email": "Email",
+    "explore": "Explore",
+    "social": "Social"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "description": "The page you're looking for doesn't exist.",
+    "back": "Back to home"
+  },
+  "loading": "Loading…"
 }
