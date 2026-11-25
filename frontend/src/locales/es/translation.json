@@ -169,7 +169,9 @@
       "email": "Ingresa un correo válido.",
       "type": "Selecciona un tipo de proyecto.",
       "description": "Describe tu proyecto en al menos 10 caracteres.",
-      "consent": "Se requiere tu consentimiento."
+      "consent": "Se requiere tu consentimiento.",
+      "location": "Selecciona desde dónde nos escribes.",
+      "clientType": "Selecciona para quién es el proyecto."
     },
     "types": {
       "website": "Sitio web",
@@ -180,12 +182,51 @@
       "other": "Otro"
     },
     "budgets": {
-      "undefined": "No definido",
-      "lt1k": "Menos de $1,000",
-      "1k-3k": "$1,000–$3,000",
-      "3k-6k": "$3,000–$6,000",
-      "gt6k": "Más de $6,000"
-    }
+      "nicaragua": {
+        "personal": {
+          "undefined": "No definido",
+          "lt150": "Menos de US$150 (unos C$5,500)",
+          "150-400": "US$150–400 (C$5,500–14,600)",
+          "400-800": "US$400–800 (C$14,600–29,300)",
+          "gt800": "Más de US$800 (C$29,300+)"
+        },
+        "business": {
+          "undefined": "No definido",
+          "lt500": "Menos de US$500 (unos C$18,300)",
+          "500-1200": "US$500–1,200 (C$18,300–43,900)",
+          "1200-3000": "US$1,200–3,000 (C$43,900–109,900)",
+          "gt3000": "Más de US$3,000 (C$109,900+)"
+        }
+      },
+      "abroad": {
+        "personal": {
+          "undefined": "No definido",
+          "lt500": "Menos de US$500",
+          "500-1000": "US$500–1,000",
+          "1000-3000": "US$1,000–3,000",
+          "gt3000": "Más de US$3,000"
+        },
+        "business": {
+          "undefined": "No definido",
+          "lt1k": "Menos de US$1,000",
+          "1k-3k": "US$1,000–3,000",
+          "3k-6k": "US$3,000–6,000",
+          "gt6k": "Más de US$6,000"
+        }
+      }
+    },
+    "location": "¿Desde dónde nos escribes?",
+    "locations": {
+      "nicaragua": "Nicaragua",
+      "abroad": "Otro país"
+    },
+    "clientType": "¿Para quién es el proyecto?",
+    "clientTypes": {
+      "business": "Empresa",
+      "personal": "Emprendimiento personal"
+    },
+    "venture": "Nombre del emprendimiento",
+    "budgetHint": "Elige país y tipo primero"
   },
   "footer": {
     "description": "Un estudio de desarrollo de software que crea soluciones digitales prácticas y bien construidas.",

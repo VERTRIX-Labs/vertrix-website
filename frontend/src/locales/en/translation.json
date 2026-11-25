@@ -169,7 +169,9 @@
       "email": "Enter a valid email address.",
       "type": "Select a project type.",
       "description": "Describe your project in at least 10 characters.",
-      "consent": "Your consent is required."
+      "consent": "Your consent is required.",
+      "location": "Select where you are based.",
+      "clientType": "Select who the project is for."
     },
     "types": {
       "website": "Website",
@@ -180,12 +182,51 @@
       "other": "Other"
     },
     "budgets": {
-      "undefined": "Not defined",
-      "lt1k": "Under $1,000",
-      "1k-3k": "$1,000–$3,000",
-      "3k-6k": "$3,000–$6,000",
-      "gt6k": "$6,000+"
-    }
+      "nicaragua": {
+        "personal": {
+          "undefined": "Not defined",
+          "lt150": "Under US$150 (about C$5,500)",
+          "150-400": "US$150–400 (C$5,500–14,600)",
+          "400-800": "US$400–800 (C$14,600–29,300)",
+          "gt800": "US$800+ (C$29,300+)"
+        },
+        "business": {
+          "undefined": "Not defined",
+          "lt500": "Under US$500 (about C$18,300)",
+          "500-1200": "US$500–1,200 (C$18,300–43,900)",
+          "1200-3000": "US$1,200–3,000 (C$43,900–109,900)",
+          "gt3000": "US$3,000+ (C$109,900+)"
+        }
+      },
+      "abroad": {
+        "personal": {
+          "undefined": "Not defined",
+          "lt500": "Under US$500",
+          "500-1000": "US$500–1,000",
+          "1000-3000": "US$1,000–3,000",
+          "gt3000": "US$3,000+"
+        },
+        "business": {
+          "undefined": "Not defined",
+          "lt1k": "Under US$1,000",
+          "1k-3k": "US$1,000–3,000",
+          "3k-6k": "US$3,000–6,000",
+          "gt6k": "US$6,000+"
+        }
+      }
+    },
+    "location": "Where are you based?",
+    "locations": {
+      "nicaragua": "Nicaragua",
+      "abroad": "Another country"
+    },
+    "clientType": "Who is the project for?",
+    "clientTypes": {
+      "business": "Company",
+      "personal": "Personal venture"
+    },
+    "venture": "Venture name",
+    "budgetHint": "Choose country and type first"
   },
   "footer": {
     "description": "A software development studio creating practical, well-engineered digital solutions.",
