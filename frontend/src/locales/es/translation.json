@@ -79,6 +79,10 @@
     "repository": "Ver código en GitHub",
     "backToAll": "Volver a proyectos",
     "next": "Siguiente proyecto",
+    "empty": {
+      "title": "Todavía no hay proyectos publicados.",
+      "body": "Estamos preparando los próximos casos. Mientras tanto, cuéntanos tu idea y conversemos."
+    },
     "status": {
       "inDevelopment": "En desarrollo",
       "live": "En línea"

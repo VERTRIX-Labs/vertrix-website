@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link, NavLink, useLocation } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { saveLanguage } from '../i18n'
@@ -18,16 +18,33 @@ export function Header() {
   const [open, setOpen] = useState(false)
   const { t, i18n } = useTranslation()
   const lang = useLang()
-  const location = useLocation()
 
-  // Close the mobile menu on navigation and on Escape.
-  useEffect(() => setOpen(false), [location.pathname, location.hash])
+  // Close the mobile menu on browser back/forward and on Escape.
+  useEffect(() => {
+    const close = () => setOpen(false)
+    window.addEventListener('popstate', close)
+    return () => window.removeEventListener('popstate', close)
+  }, [])
   useEffect(() => {
     if (!open) return
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setOpen(false) }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
   }, [open])
+
+  // Lock page scroll while the mobile menu is open.
+  useEffect(() => {
+    document.body.classList.toggle('menu-open', open)
+    return () => document.body.classList.remove('menu-open')
+  }, [open])
+
+  // Never leave the page locked if the viewport grows past the mobile breakpoint.
+  useEffect(() => {
+    const desktop = window.matchMedia('(min-width: 1051px)')
+    const onChange = () => { if (desktop.matches) setOpen(false) }
+    desktop.addEventListener('change', onChange)
+    return () => desktop.removeEventListener('change', onChange)
+  }, [])
 
   const switchLanguage = (next: Lang) => {
     i18n.changeLanguage(next)
@@ -42,9 +59,9 @@ export function Header() {
           <span>VERTRIX</span>
         </Link>
         <nav id="site-nav" className={open ? 'nav-links open' : 'nav-links'} aria-label={t('nav.main')}>
-          <NavLink to="/projects">{t('nav.projects')}</NavLink>
+          <NavLink to="/projects" onClick={() => setOpen(false)}>{t('nav.projects')}</NavLink>
           {sectionLinks.map(([path, key]) => (
-            <Link key={key} to={path}>{t(key)}</Link>
+            <Link key={key} to={path} onClick={() => setOpen(false)}>{t(key)}</Link>
           ))}
         </nav>
         <div className="nav-actions">

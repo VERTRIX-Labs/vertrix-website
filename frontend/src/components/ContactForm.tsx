@@ -5,6 +5,11 @@ import { useTranslation } from 'react-i18next'
 type Field = 'name' | 'email' | 'location' | 'clientType' | 'type' | 'description' | 'consent'
 type FieldErrors = Partial<Record<Field, string>>
 
+function FieldError({ field, errors }: { field: Field; errors: FieldErrors }) {
+  const message = errors[field]
+  return message ? <small id={`${field}-error`} role="alert">{message}</small> : null
+}
+
 export function ContactForm() {
   const { t } = useTranslation()
   const [location, setLocation] = useState('')
@@ -36,6 +41,7 @@ export function ContactForm() {
     if (description.length < 10) next.description = t('contact.validation.description')
     if (!data.get('consent')) next.consent = t('contact.validation.consent')
     setErrors(next)
+    if (Object.keys(next).length > 0) setStatus('idle')
 
     const firstInvalid = (Object.keys(next) as Field[])[0]
     if (firstInvalid) {
@@ -67,33 +73,35 @@ export function ContactForm() {
 
   const err = (field: Field) => errors[field]
   const describe = (field: Field) => (err(field) ? `${field}-error` : undefined)
-  const FieldError = ({ field }: { field: Field }) =>
-    err(field) ? <small id={`${field}-error`} role="alert">{err(field)}</small> : null
+  // Hide a previous success/error message as soon as the user edits the form.
+  const handleChange = () => {
+    if (status === 'success' || status === 'error') setStatus('idle')
+  }
 
   return (
-    <form className="contact-form" onSubmit={submit} noValidate>
+    <form className="contact-form" onSubmit={submit} onChange={handleChange} noValidate>
       <div className="form-grid">
         <label>{t('contact.name')}
           <input name="name" autoComplete="name" aria-invalid={Boolean(err('name'))} aria-describedby={describe('name')} />
-          <FieldError field="name" />
+          <FieldError errors={errors} field="name" />
         </label>
         <label>{t('contact.email')}
           <input name="email" type="email" autoComplete="email" aria-invalid={Boolean(err('email'))} aria-describedby={describe('email')} />
-          <FieldError field="email" />
+          <FieldError errors={errors} field="email" />
         </label>
         <label>{t('contact.location')}
           <select name="location" value={location} onChange={(e) => setLocation(e.target.value)} aria-invalid={Boolean(err('location'))} aria-describedby={describe('location')}>
             <option value="" disabled>{t('contact.select')}</option>
             {['nicaragua', 'abroad'].map((id) => <option key={id} value={id}>{t(`contact.locations.${id}`)}</option>)}
           </select>
-          <FieldError field="location" />
+          <FieldError errors={errors} field="location" />
         </label>
         <label>{t('contact.clientType')}
           <select name="clientType" value={clientType} onChange={(e) => setClientType(e.target.value)} aria-invalid={Boolean(err('clientType'))} aria-describedby={describe('clientType')}>
             <option value="" disabled>{t('contact.select')}</option>
             {['business', 'personal'].map((id) => <option key={id} value={id}>{t(`contact.clientTypes.${id}`)}</option>)}
           </select>
-          <FieldError field="clientType" />
+          <FieldError errors={errors} field="clientType" />
         </label>
         <label>{t(clientType === 'personal' ? 'contact.venture' : 'contact.company')}
           <input name="company" autoComplete="organization" />
@@ -103,7 +111,7 @@ export function ContactForm() {
             <option value="" disabled>{t('contact.select')}</option>
             {types.map((id) => <option key={id} value={id}>{t(`contact.types.${id}`)}</option>)}
           </select>
-          <FieldError field="type" />
+          <FieldError errors={errors} field="type" />
         </label>
         <label>{t('contact.budget')}
           {/* key: al cambiar de grupo se borra el rango elegido antes */}
@@ -114,14 +122,14 @@ export function ContactForm() {
         </label>
         <label className="full">{t('contact.description')}
           <textarea name="description" rows={5} aria-invalid={Boolean(err('description'))} aria-describedby={describe('description')} />
-          <FieldError field="description" />
+          <FieldError errors={errors} field="description" />
         </label>
       </div>
       <label className="consent">
         <input name="consent" type="checkbox" aria-invalid={Boolean(err('consent'))} aria-describedby={describe('consent')} />
         <span>{t('contact.consent')}</span>
       </label>
-      <FieldError field="consent" />
+      <FieldError errors={errors} field="consent" />
       {status === 'success' && <p className="form-status success" role="status">{t('contact.success')}</p>}
       {status === 'error' && <p className="form-status error" role="alert">{t('contact.error')}</p>}
       <button className="button primary" type="submit" disabled={status === 'loading'}>

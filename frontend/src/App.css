@@ -16,6 +16,11 @@
 .text-link { display: inline-flex; align-items: center; gap: 7px; color: #d6dcea; font-size: 14px; font-weight: 500; border-bottom: 1px solid var(--line-strong); padding-bottom: 2px; transition: border-color .2s, color .2s; }
 .text-link:hover { border-color: var(--blue); color: #fff; }
 
+/* Keyboard focus mirrors hover so interactive elements are easy to spot. */
+.project-card:focus-within { border-color: var(--line-strong); }
+.project-card:focus-within .project-media img { transform: scale(1.04); }
+.team-links a, .footer-grid > div:not(:first-child) a, .back-link, .contact-direct a, .language-switch button { transition: color .2s, border-color .2s; }
+
 .tag-list, .stack-grid ul { display: flex; flex-wrap: wrap; gap: 8px; }
 .tag-list span, .stack-grid li { border: 1px solid var(--line); padding: 6px 10px; color: #ccd3e3; font: 400 12px/1.2 var(--font-mono); background: rgba(255,255,255,.02); }
 
@@ -42,9 +47,11 @@
 .language-switch { display: flex; align-items: center; gap: 5px; color: var(--dim); font: 500 12px/1 var(--font-mono); }
 .language-switch button { border: 0; background: none; color: var(--dim); padding: 8px 4px; font: inherit; }
 .language-switch button.active { color: #fff; }
+.language-switch button:hover { color: #fff; }
 .nav-cta { border: 1px solid var(--line-strong); padding: 11px 16px; font-size: 13px; font-weight: 600; transition: .2s; }
 .nav-cta:hover { border-color: var(--blue); background: rgba(8,123,255,.1); }
 .menu-button { display: none; border: 0; background: none; color: #fff; padding: 8px; }
+body.menu-open { overflow: hidden; }
 
 /* ---------- Hero ---------- */
 .hero-section { position: relative; min-height: min(100svh, 920px); display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(300px, .92fr); align-items: center; gap: 12px; padding: 110px max(24px, calc((100% - 1240px)/2)) 70px; overflow: hidden; border-bottom: 1px solid var(--line); }
@@ -112,6 +119,11 @@
 .project-card.featured .project-media { aspect-ratio: auto; min-height: 420px; border-bottom: 0; border-right: 1px solid var(--line); }
 .project-card.featured .project-body { padding: 36px; justify-content: center; }
 .project-card.featured .project-body .text-link { margin-top: 10px; }
+
+/* Empty state (no projects yet, filtered lists, etc.) */
+.empty-state { max-width: 620px; padding: 44px; border: 1px dashed var(--line-strong); background: rgba(255,255,255,.015); }
+.empty-state h2 { font-size: clamp(24px, 3vw, 32px); letter-spacing: -.02em; }
+.empty-state p { margin: 12px 0 24px; color: var(--muted); line-height: 1.7; }
 
 /* Process */
 .process-line { display: grid; grid-template-columns: repeat(5, 1fr); position: relative; }
@@ -226,7 +238,7 @@
 
 /* ---------- Responsive ---------- */
 @media (max-width: 1050px) {
-  .nav-links { position: fixed; inset: 78px 0 auto; display: none; flex-direction: column; align-items: flex-start; gap: 0; padding: 14px 24px 28px; background: rgba(8,13,27,.98); border-bottom: 1px solid var(--line); }
+  .nav-links { position: fixed; inset: 78px 0 auto; display: none; flex-direction: column; align-items: flex-start; gap: 0; padding: 14px 24px 28px; background: rgba(8,13,27,.98); border-bottom: 1px solid var(--line); max-height: calc(100svh - 78px); overflow-y: auto; }
   .nav-links.open { display: flex; }
   .nav-links a { width: 100%; padding: 14px 0; font-size: 16px; border-bottom: 1px solid var(--line); }
   .menu-button { display: block; }
@@ -252,7 +264,7 @@
 @media (max-width: 700px) {
   :root { --shell: calc(100% - 32px); }
   .site-header { height: 68px; }
-  .nav-links { top: 68px; padding-inline: 16px; }
+  .nav-links { top: 68px; padding-inline: 16px; max-height: calc(100svh - 68px); }
   .brand { font-size: 13px; }
   .section { padding: 84px 0; }
   .section-heading.split { flex-direction: column; align-items: flex-start; }
@@ -285,6 +297,22 @@
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .footer-brand { grid-column: 1 / -1; }
   .footer-bottom { flex-direction: column; gap: 8px; }
+}
+
+@media (max-width: 480px) {
+  .section { padding: 68px 0; }
+  .hero-section { padding: 118px 16px 56px; }
+  .hero-content h1 { font-size: clamp(52px, 17vw, 68px); }
+  .hero-subtitle { font-size: 20px; }
+  .hero-content .slogan { margin-top: 32px; }
+  .hero-actions { width: 100%; }
+  .hero-actions .button { flex: 1 1 100%; }
+  .page-section { padding: 104px 0 72px; }
+  .project-detail { padding: 100px 0 72px; }
+  .empty-state { padding: 28px; }
+  .contact-form { padding: 18px; }
+  .next-project { padding: 22px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

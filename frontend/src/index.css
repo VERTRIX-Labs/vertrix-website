@@ -33,8 +33,8 @@ button { cursor: pointer; }
 a { color: inherit; text-decoration: none; }
 img, svg { display: block; max-width: 100%; }
 ul, ol { margin: 0; padding: 0; list-style: none; }
-h1, h2, h3 { font-family: var(--font-display); font-weight: 600; margin: 0; }
-p { margin: 0; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 600; margin: 0; text-wrap: balance; }
+p { margin: 0; text-wrap: pretty; }
 ::selection { background: rgba(8, 123, 255, 0.42); }
 :focus-visible { outline: 2px solid #63a4ff; outline-offset: 3px; }
 main:focus { outline: none; }

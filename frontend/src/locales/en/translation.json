@@ -79,6 +79,10 @@
     "repository": "View source on GitHub",
     "backToAll": "Back to all projects",
     "next": "Next project",
+    "empty": {
+      "title": "No published projects yet.",
+      "body": "We're preparing the next case studies. In the meantime, tell us about your idea."
+    },
     "status": {
       "inDevelopment": "In development",
       "live": "Live"
